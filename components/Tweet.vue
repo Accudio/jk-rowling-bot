@@ -2,7 +2,7 @@
   <div class="tweet">
     <div class="tweet-head">
       <div class="tweet-image">
-        <img src="http://avatars.io/twitter/jk_rowling/" alt="avatar">
+        <img src="https://avatars.io/twitter/jk_rowling/" alt="avatar">
       </div>
       <div class="tweet-author">
         <div class="name">
@@ -71,6 +71,7 @@ $family-1: 'Roboto', sans-serif;
   border: 1px solid #e1e8ed;
   border-radius: 5px;
   cursor: pointer;
+  max-width: 100vw;
   padding: 20px;
   position: relative;
   transition: border-color .1s;

@@ -84,7 +84,8 @@ def format_text(text):
     'norris',
     'sirius',
     'black',
-    'rowling'
+    'rowling',
+    'albus'
   ]
   replacements = [
     ['its', 'it\'s'],
@@ -164,7 +165,7 @@ tokenizer = load(open('tmp/tokenizer.pkl', 'rb'))
 
 # generate new text
 generated = []
-num_vals = 1000
+num_vals = 500
 for i in range(num_vals):
   # select a seed text
   seed_text = lines[randint(0, len(lines))]

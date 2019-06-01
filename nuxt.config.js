@@ -15,7 +15,14 @@ export default {
       { hid: 'description', name: 'description', content: pkg.description }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'shortcut icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' },
+      { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32x32.png' },
+      { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon-16x16.png' },
+      { rel: 'mask-icon', href: '/safari-pinned-tab.svg', color: '#80a2bc' },
+      { name: 'msapplication-TileColor', content: '#2d89ef' },
+      { name: 'msapplication-config', content: '/browserconfig.xml' },
+      { name: 'theme-color', content: '#5e809a' },
       { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto:400,700,900&display=swap' }
     ]
   },

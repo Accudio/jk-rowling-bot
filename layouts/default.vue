@@ -5,6 +5,10 @@
 <style lang="scss">
 $family-1: 'Roboto', sans-serif;
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   align-items: center;
   background-color: #ebebeb;
