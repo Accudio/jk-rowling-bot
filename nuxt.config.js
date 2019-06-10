@@ -23,14 +23,14 @@ export default {
       { name: 'msapplication-TileColor', content: '#2d89ef' },
       { name: 'msapplication-config', content: '/browserconfig.xml' },
       { name: 'theme-color', content: '#5e809a' },
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto:400,700,900&display=swap' }
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,700,900&display=swap' }
     ]
   },
 
   /*
   ** Customize the progress-bar color
   */
-  loading: { color: '#fff' },
+  loading: false,
 
   generate: {
     fallback: true,

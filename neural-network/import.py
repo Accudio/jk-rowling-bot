@@ -12,8 +12,22 @@ def load_doc(filename):
 
 # turn a doc into clean tokens
 def clean_doc(doc):
-  # replace '--' with a space ' '
-  doc = doc.replace('--', ' ')
+  replacements = [
+    ['--', ' '],
+    ['.', ' puncfullstoppunc '],
+    [',', ' punccommapunc '],
+    ['!', ' puncexclamationpunc '],
+    ['?', ' puncquestionpunc '],
+    ['...', ' puncelipsispunc '],
+    [':', ' punccolonpunc '],
+    [';', ' puncsemicolonpunc '],
+    ['&', ' puncampersandpunc '],
+    ['\n', ' puncstoppunc ']
+  ]
+
+  for i in range(0, len(replacements)):
+    doc = doc.replace(replacements[i][0], replacements[i][1])
+
   # split into tokens by white space
   tokens = doc.split()
   # remove punctuation from each token

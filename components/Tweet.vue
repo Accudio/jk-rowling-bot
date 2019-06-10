@@ -1,31 +1,33 @@
 <template>
-  <div class="tweet">
-    <div class="tweet-head">
-      <div class="tweet-image">
-        <img src="https://avatars.io/twitter/jk_rowling/" alt="avatar">
-      </div>
-      <div class="tweet-author">
-        <div class="name">
-          J.K. Rowling
+  <div class="tweet-wrap">
+    <div class="tweet">
+      <div class="tweet-head">
+        <div class="tweet-image">
+          <img src="https://avatars.io/twitter/jk_rowling/" alt="avatar">
         </div>
-        <div class="handle">
-          @jk_rowling
+        <div class="tweet-author">
+          <div class="name">
+            J.K. Rowling
+          </div>
+          <div class="handle">
+            @jk_rowling
+          </div>
         </div>
+        <button id="refresh-tweet" class="tweet-refresh" :class="{ 'active': refreshing }" title="Refresh Tweet" @click="refreshTweet" @animationend="refreshing = false">
+          <font-awesome-icon :icon="['fas', 'sync-alt']" />
+        </button>
       </div>
-      <button id="refresh-tweet" class="tweet-refresh" :class="{ 'active': refreshing }" title="Refresh Tweet" @click="refreshTweet" @animationend="refreshing = false">
-        <font-awesome-icon :icon="['fas', 'sync-alt']" />
-      </button>
-    </div>
-    <div class="tweet-body">
-      <p id="tweet-text">
-        {{ currentTweet }}
-      </p>
-    </div>
-    <div class="tweet-footer">
-      <div class="icons">
-        <font-awesome-icon :icon="['fas', 'reply']" />
-        <font-awesome-icon :icon="['fas', 'retweet']" />
-        <font-awesome-icon :icon="['fas', 'heart']" />
+      <div class="tweet-body">
+        <p id="tweet-text">
+          {{ currentTweet }}
+        </p>
+      </div>
+      <div class="tweet-footer">
+        <div class="icons">
+          <font-awesome-icon :icon="['fas', 'reply']" />
+          <font-awesome-icon :icon="['fas', 'retweet']" />
+          <font-awesome-icon :icon="['fas', 'heart']" />
+        </div>
       </div>
     </div>
   </div>
@@ -35,12 +37,25 @@
 import tweets from '~/data/data.json'
 
 export default {
+  props: {
+    currentAcc: {
+      type: Number,
+      default: 50
+    }
+  },
+
   data: () => ({
     tweets: tweets,
     currentTweet: '',
     lastTweet: '',
     refreshing: false
   }),
+
+  watch: {
+    currentAcc: function() {
+      this.changeTweet()
+    }
+  },
 
   mounted: function() {
     this.changeTweet()
@@ -50,7 +65,7 @@ export default {
     changeTweet: function() {
       this.lastTweet = this.currentTweet
       do {
-        this.currentTweet = this.tweets[Math.floor(Math.random()*this.tweets.length)]
+        this.currentTweet = this.tweets[this.currentAcc / 100][Math.floor(Math.random()*this.tweets[this.currentAcc / 100].length)]
       } while (this.currentTweet === this.lastTweet)
     },
     refreshTweet: function() {
@@ -66,16 +81,25 @@ $accent-colour: #3b94d9;
 $light-colour: #697882;
 $family-1: 'Roboto', sans-serif;
 
+.tweet-wrap {
+  align-items: center;
+  display: flex;
+  margin: 30px 0;
+  min-height: 200px;
+}
+
 .tweet {
   background-color: #fff;
   border: 1px solid #e1e8ed;
   border-radius: 5px;
+  color: #000;
   cursor: pointer;
   max-width: 100vw;
   padding: 20px;
   position: relative;
+  text-align: left;
   transition: border-color .1s;
-  width: 400px;
+  width: 100%;
   
   &:hover {
     border-color: #ccd6dd;

@@ -86,3 +86,6 @@ sw.*
 # Temporary Neural Network Files
 neural-network/tmp/*
 !neural-network/tmp/.keepme
+
+# netlify
+.netlify/
